@@ -28,12 +28,12 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secret.DOCKER_HUB_USERNAME }}/volume-test:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/volume-test:latest
 
       - name: Run the container with the volume
         run: |
           docker volume create myvolume
-          docker run --rm -v myvolume:/data ${{ secret.DOCKER_HUB_USERNAME }}/volume-test
+          docker run --rm -v myvolume:/data ${{ secrets.DOCKER_HUB_USERNAME }}/volume-test
 
 
       - name: Verify volume contents
